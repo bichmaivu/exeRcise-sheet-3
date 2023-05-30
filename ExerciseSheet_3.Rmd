@@ -61,6 +61,9 @@ a)  Create a new repository on GitHub in your account named
     below:  https://github.com/bichmaivu/exeRcise-sheet-3.git
 b)  Push your code to this new repository by copying and executing the
     snippet on github listed under
+    git remote add origin https://github.com/bichmaivu/exeRcise-sheet-3.git
+git branch -M main
+git push -u origin main
     `…or push an existing repository from the command line`.
 c)  Regularly push your latest changes to GitHub again and especially do
     so when you are finished with this sheet.
@@ -81,6 +84,20 @@ b)  Load the data for both years into R. Check the type of the count
     not numeric? Fix the problem in an appropriate manner, it is OK if
     some of the counts are inaccurate because of this. Explain your
     solution and the repercussions.
+    
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+```{r}
+vornamen_2021 <- read.csv("data/open_data_portal_2022.csv")
+vornamen_2022 <- read.csv("data/vornamen_2021.csv")
+
+typeof(vornamen_2021$Anzahl)
+typeof(vornamen_2022$Anzahl)
+```
+
+The count variable ("Anzahl") has the type "character" because sometimes it's not sure how often a name get used, so it has an explanation. This is the reason why the type of count variable isn't right.
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
