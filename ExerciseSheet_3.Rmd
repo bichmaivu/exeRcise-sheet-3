@@ -96,14 +96,19 @@ vornamen_2021 <- read.csv("data/vornamen_2021.csv")
 typeof(vornamen_2021$Anzahl)
 typeof(vornamen_2022$Anzahl)
 
-vornamen_2021 <- vornamen_2021 %>%
-  mutate(Anzahl = case_when(Anzahl == "4 oder weniger" ~ 4))
+vornamen_2021[vornamen_2021=="4 oder weniger"] <- "4"
+vornamen_2022[vornamen_2022=="4 oder weniger"] <- "4"
 
-counting_city <- counting_city %>%
-        mutate(Size = case_when(Size == "Medium" ~ "mittel",Size == "Small" ~ "klein",Size == "Large"  ~ "groß"))
+vornamen_2021$Anzahl = as.numeric(vornamen_2021$Anzahl)
+is.numeric(vornamen_2021$Anzahl)
+
+vornamen_2022$Anzahl = as.numeric(vornamen_2022$Anzahl)
+is.numeric(vornamen_2022$Anzahl)
 ```
 
 The count variable ("Anzahl") has the type "character" in both years because sometimes it's not sure how often a name get used, so it has an explanation. This is the reason why the type of count variable isn't right.
+
+The repercussion is that the count variable isn't exactly at it was in the beginning, because it was unsecure, if there were four babies or less that get that name.
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
