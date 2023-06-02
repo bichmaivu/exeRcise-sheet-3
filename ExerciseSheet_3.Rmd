@@ -112,6 +112,14 @@ The repercussion is that the count variable isn't exactly at it was in the begin
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
+    
+```{r}
+sum(vornamen_2021$Anzahl)
+
+sum(vornamen_2022$Anzahl)
+```
+
+In 2021 there were 26620 babies born in Munich and in 2022 were 25199. So the bigger baby-boom was in year 2021.
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
