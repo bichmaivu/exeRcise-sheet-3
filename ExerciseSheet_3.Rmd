@@ -83,35 +83,49 @@ library(tidyverse)
 vornamen_2022 <- read.csv("data/open_data_portal_2022.csv")
 vornamen_2021 <- read.csv("data/vornamen_2021.csv")
 
-typeof(vornamen_2021$Anzahl)
-typeof(vornamen_2022$Anzahl)
+vornamen_2021 <- vornamen_2021 %>% 
+  rename(
+    first_name = Vorname,
+    number = Anzahl,
+    gender = Geschlecht
+    )
+
+vornamen_2022 <- vornamen_2022 %>% 
+  rename(
+    first_name = Vorname,
+    number = Anzahl,
+    gender = Geschlecht
+    )
+
+typeof(vornamen_2021$number)
+typeof(vornamen_2022$number)
 
 vornamen_2021[vornamen_2021=="4 oder weniger"] <- "4"
 vornamen_2022[vornamen_2022=="4 oder weniger"] <- "4"
 
-vornamen_2021$Anzahl = as.numeric(vornamen_2021$Anzahl)
-is.numeric(vornamen_2021$Anzahl)
+vornamen_2021$number = as.numeric(vornamen_2021$number)
+is.numeric(vornamen_2021$number)
 
-vornamen_2022$Anzahl = as.numeric(vornamen_2022$Anzahl)
-is.numeric(vornamen_2022$Anzahl)
+vornamen_2022$number = as.numeric(vornamen_2022$number)
+is.numeric(vornamen_2022$number)
 ```
 
-The count variable ("Anzahl") has the type "character" in both years
+The count variable ("number") has the type "character" in both years
 because sometimes it's not sure how often a name get used, so it has an
 explanation. This is the reason why the type of count variable isn't
 right.
 
-The repercussion is that the count variable isn't exactly at it was in
-the beginning, because it was unsecure, if there were four babies or
-less that get that name.
+The repercussion is that the count variable "number" isn't exactly at it was in the beginning, because it was unsecure, if there were four babies or less that get that name.
+
+The columns got renamed, so that everything is in one language (English).
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
 
 ```{r}
-sum(vornamen_2021$Anzahl)
+sum(vornamen_2021$number)
 
-sum(vornamen_2022$Anzahl)
+sum(vornamen_2022$number)
 ```
 
 In 2021 there were 26620 babies born in Munich and in 2022 were 25199.
@@ -140,7 +154,7 @@ f)  Combine the counts for same names to determine the most popular
 ```{r}
 vornamen <- inner_join(vornamen_2021, 
                        vornamen_2022, 
-                       by = "Vorname")
+                       by = "first_name")
 
 vornamen %>% 
   head(10) %>% 
@@ -168,7 +182,7 @@ Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800, 5900,
 ###Calculate column-wise means
 
 ```{r}
-column_means <- lapply(tax_data[, -1], 2, mean)
+column_means <- colMeans(tax_data[, -1])
 
 column_means
 ```
@@ -176,6 +190,7 @@ column_means
 b)  Using ChatGPT try to understand what the rapply() function does.
     Create an easy example with mock data where the function is used and
     explain it in your words.
+    
 
 ## Final Note
 
