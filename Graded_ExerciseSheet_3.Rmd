@@ -80,17 +80,15 @@ vornamen_2022 <- read.csv("data/open_data_portal_2022.csv")
 vornamen_2021 <- read.csv("data/vornamen_2021.csv")
 
 vornamen_2021 <- vornamen_2021 %>% 
-  rename(
-    first_name = Vorname,
-    number = Anzahl,
-    gender = Geschlecht
+  rename(first_name = Vorname,
+         number = Anzahl,
+         gender = Geschlecht
     )
 
 vornamen_2022 <- vornamen_2022 %>% 
-  rename(
-    first_name = Vorname,
-    number = Anzahl,
-    gender = Geschlecht
+  rename(first_name = Vorname,
+         number = Anzahl,
+         gender = Geschlecht
     )
 
 typeof(vornamen_2021$number)
