@@ -156,17 +156,13 @@ f)  Combine the counts for same names to determine the most popular
     formatted table for both years. Include a table caption.
     
 ```{r}
-vornamen <- 
-
-vornamen <- vornamen %>%
-  mutate(total_number = number.x + number.y)
-
 most_popular_names <- vornamen %>% 
   group_by(first_name) %>%
-  arrange(desc(number)) %>%
+  summarise(total_number = sum(number)) %>%
+  arrange(desc(total_number)) %>%
   head(10)
 
-knitr::kable (most_popular_names, caption = "The top 10 names") 
+knitr::kable (most_popular_names, caption = "The top 10 names in year 2021 and 2022") 
 ```
 
 ## Exercise 4: Chat GPT + apply (3 points)
