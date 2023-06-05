@@ -124,7 +124,7 @@ right.
 
 The repercussion is that the count variable "number" isn't exactly at it was in the beginning, because it was unsecure, if there were four babies or less that get that name.
 
-The columns got renamed, so that everything is in one  language (English).
+The columns got renamed, so that everything is in one language (English).
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
@@ -156,8 +156,6 @@ f)  Combine the counts for same names to determine the most popular
     formatted table for both years. Include a table caption.
     
 ```{r}
-vornamen_21_22 
-
 vornamen <- vornamen %>%
   mutate(total_number = number.x + number.y)
 
