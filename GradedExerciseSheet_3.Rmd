@@ -1,8 +1,9 @@
 ---
-title: "Exercise #X"
+title: "Exercise #2"
 subtitle: "Fortgeschrittene Statistische Software für NF - SS 2022/23"
-author: "Name (Martrikelnummer), Name (Martrikelnummer), ..."
+author: "Bichmai Vu (12057445)"
 date: "`r Sys.Date()`"
+output: distill::distill_article
 ---
 
 ## General Remarks
@@ -21,6 +22,10 @@ date: "`r Sys.Date()`"
 -   Always submit both the rendered document(s) as well as your source
     Rmarkdown document. Submit the files separately on moodle, **not**
     as a zip archive.
+    
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
 
 ## Exercise 1: Initializing git (4 Points)
 
@@ -86,6 +91,7 @@ b)  Load the data for both years into R. Check the type of the count
     
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(distill)
 ```
 
 ```{r}
