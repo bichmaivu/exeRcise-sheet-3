@@ -148,7 +148,7 @@ vornamen_2022 <- vornamen_2022 %>%
 e)  Combine both datasets into one using `bind_rows()`.
 
 ```{r}
-vornamen_21_22 <- bind_rows(vornamen_2021, vornamen_2022)
+vornamen <- bind_rows(vornamen_2021, vornamen_2022)
 ```
 
 f)  Combine the counts for same names to determine the most popular
@@ -156,12 +156,10 @@ f)  Combine the counts for same names to determine the most popular
     formatted table for both years. Include a table caption.
     
 ```{r}
-vornamen <- inner_join(vornamen_2021, 
-                       vornamen_2022, 
-                       by = "first_name")
+vornamen_21_22 
 
 vornamen <- vornamen %>%
-    mutate(total_number = number.x + number.y)
+  mutate(total_number = number.x + number.y)
 
 vornamen %>% 
   head(10) %>% 
@@ -223,4 +221,4 @@ modified_list <- rapply(my_list, function(x) x + 10, classes = "numeric", how = 
 ## Final Note
 
 Make sure to push all your commits and changes to GitHub before
-submittining the exercise sheet.
+submitting the exercise sheet.
