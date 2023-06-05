@@ -156,14 +156,17 @@ f)  Combine the counts for same names to determine the most popular
     formatted table for both years. Include a table caption.
     
 ```{r}
+vornamen <- 
+
 vornamen <- vornamen %>%
   mutate(total_number = number.x + number.y)
 
-vornamen %>% 
-  head(10) %>% 
-  group_by(first_name, total_number, year.x, year.y, gender.x) %>%
-  arrange(desc(total_number)) %>%
-knitr::kable (caption = "The top 10 names") 
+most_popular_names <- vornamen %>% 
+  group_by(first_name) %>%
+  arrange(desc(number)) %>%
+  head(10)
+
+knitr::kable (most_popular_names, caption = "The top 10 names") 
 ```
 
 ## Exercise 4: Chat GPT + apply (3 points)
