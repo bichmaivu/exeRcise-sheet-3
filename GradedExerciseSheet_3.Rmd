@@ -162,7 +162,7 @@ most_popular_names <- vornamen %>%
   arrange(desc(total_number)) %>%
   head(10)
 
-knitr::kable (most_popular_names, caption = "The top 10 names in year 2021 and 2022") 
+knitr::kable (most_popular_names, caption = "The top 10 names") 
 ```
 
 ## Exercise 4: Chat GPT + apply (3 points)
