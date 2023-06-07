@@ -1,26 +1,10 @@
 ---
-title: "Exercise #3"
-subtitle: "Fortgeschrittene Statistische Software für NF - SS 2022/23"
+title: 'Exercise #3'
 author: "Bichmai Vu (12057445), Nele Steiner (12548686)"
-date: "`r Sys.Date()`"
+date: '`r Sys.Date()`'
+subtitle: "Fortgeschrittene Statistische Software für NF - SS 2022/23"
 ---
 
-## General Remarks
-
--   You can submit your solutions in teams of up to 3 students.
--   Include all your team-member's names and student numbers
-    (Matrikelnummern) in the `authors` field.
--   Please use the exercise template document to work on and submit your
-    results.
--   Use a level 2 heading for each new exercise and answer each subtask
-    next to it's bullet point or use a new level 3 heading if you want.
--   Always render the R code for your solutions and make sure to include
-    the resulting data in your rendered document.
-    -   Make sure to not print more than 10 rows of data (unless
-        specifically instructed to).
--   Always submit both the rendered document(s) as well as your source
-    Rmarkdown document. Submit the files separately on moodle, **not**
-    as a zip archive.
     
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(error = TRUE)
@@ -40,13 +24,7 @@ c)  For all of the following tasks in this exercise sheet we ask you to
     always commit your changes after finishing each subtask e.g. create
     a commit after task *1d*, *1e* etc.
 
-> Note: This applies only to answers that have text or code as their
-> answer. If you complete tasks in a different order or forget to commit
-> one, this is no problem. If you change your answers you can just
-> create multiple commits to track the changes.
-
-d)  Name 2 strengths and 2 weaknesses of git. (Don't forget to create a
-    commit after this answer, see *1c*)
+d)  Name 2 strengths and 2 weaknesses of git.
     
 strengths: 
 1. It's very hard to lose files with git
@@ -141,6 +119,9 @@ c)  Calculate the total number of babies born in Munich in 2022
 total_number_of_babies_2021 <- sum(vornamen_2021$number)
 
 total_number_of_babies_2022 <- sum(vornamen_2022$number)
+
+total_number_of_babies_2021
+total_number_of_babies_2022
 ```
 
 d)  Add a new column `year` to both datasets which holds the correct
@@ -156,7 +137,7 @@ vornamen_2022 <- vornamen_2022 %>%
 e)  Combine both datasets into one using `bind_rows()`.
 
 ```{r}
-vornamen <- bind_rows(vornamen_2021, vornamen_2022)
+combination_2021_2022 <- bind_rows(vornamen_2021, vornamen_2022)
 ```
 
 f)  Combine the counts for same names to determine the most popular
@@ -164,7 +145,7 @@ f)  Combine the counts for same names to determine the most popular
     formatted table for both years. Include a table caption.
     
 ```{r}
-most_popular_names <- vornamen %>% 
+most_popular_names <- combination_2021_2022 %>% 
   group_by(first_name) %>%
   summarise(total_number = sum(number)) %>%
   arrange(desc(total_number)) %>%
@@ -184,44 +165,52 @@ a)  The code below does not work because the wrong apply function has
 
 ###Create a sample data frame
 
-```{r}
-tax_data <- data.frame( Name = c("Munich GmbH", "ABC Inc.", "Backpacks
-1980", "Bavarian Circus"), Tax_2019 = c(5000, 4000, 6000, 3500),
-Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800, 5900,
-3400) )
-```
+tax_data \<- data.frame( 
+Name = c("Munich GmbH", "ABC Inc.", "Backpacks 1980", "Bavarian Circus"), 
+Tax_2019 = c(5000, 4000, 6000, 3500),
+Tax_2020 = c(4800, 4200, 5800, 3700), 
+Tax_2021 = c(5200, 3800, 5900, 3400) 
+)
 
 ###Calculate column-wise means
 
-```{r}
-column_means <- colMeans(tax_data[, -1])
+column_means \<- lapply(tax_data\[, -1\], 2, mean)
 
+column_means
+
+```{r}
+# Corrected code by chat gbt
+# Create a sample data frame
+
+tax_data <- data.frame(
+  Name = c("Munich GmbH", "ABC Inc.", "Backpacks 1980", "Bavarian Circus"),
+  Tax_2019 = c(5000, 4000, 6000, 3500),
+  Tax_2020 = c(4800, 4200, 5800, 3700),
+  Tax_2021 = c(5200, 3800, 5900, 3400)
+)
+
+column_means <- colMeans(tax_data[, -1])
 column_means
 ```
 
+There were two issues in the original code: 
+1. The assignment operator "<-" was incorrectly written as "\<-". The correct operator is "<-", which is used for assigning values to variables in R.
+2. The "lapply" function call had incorrect arguments. The code wasn't correct, because of presentation "\[, -1\]" and we need to correct this into "[, -1]". Also instead of 2, as the second argument need to pass the mean function. So the correct call should be "lapply(tax_data[, -1], mean)".
+
+
 b)  Using ChatGPT try to understand what the rapply() function does.
     Create an easy example with mock data where the function is used and
-    explain it in your words.
-    
-The rapply() function in R is a recursive version of the lapply() function. It is used to apply a given function to each element of a list or nested list structure, including nested lists within lists.  
+    explain it in your words. 
+
+Explanation: The "rapply" function applies a function to each element of a list or nested list structure, and the "rapply" function traverses the structure recursively of "lapply", applying the function to all levels of nesting.
 
 ```{r}
-my_list <- list(
-  a = 1,
-  b = list(
-    c = 2,
-    d = 3
-  ),
-  e = list(
-    f = list(
-      g = 4,
-      h = 5
-    )
-  )
-)
+my_list <- list(a = 1:3, b = 4:6, c = 7:9)
 
-modified_list <- rapply(my_list, function(x) x + 10, classes = "numeric", how = "replace")
+rapply(my_list, function(x) x^2)
 ```
+
+Explanation: In this example "rapply" is used to take each value of "my_list" to square.
 
 ## Final Note
 
