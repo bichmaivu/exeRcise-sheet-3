@@ -2,7 +2,10 @@
 title: 'Exercise #3'
 author: "Bichmai Vu (12057445), Nele Steiner (12548686)"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 subtitle: "Fortgeschrittene Statistische Software für NF - SS 2022/23"
 ---
     
