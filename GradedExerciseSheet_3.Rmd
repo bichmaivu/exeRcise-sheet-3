@@ -4,7 +4,6 @@ author: "Bichmai Vu (12057445), Nele Steiner (12548686)"
 date: '`r Sys.Date()`'
 subtitle: "Fortgeschrittene Statistische Software für NF - SS 2022/23"
 ---
-
     
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(error = TRUE)
@@ -27,11 +26,11 @@ c)  For all of the following tasks in this exercise sheet we ask you to
 d)  Name 2 strengths and 2 weaknesses of git.
     
 strengths: 
-1. It's very hard to lose files with git
-2. Git allows easy collaboration as it allows everyone who is working on a project to see the changes other persons did
+1. It's very hard to lose files with git.
+2. Git allows easy collaboration as it allows everyone who is working on a project to see the changes other persons did.
     
 weaknesses: 
-1. Git struggles with large files and a bit
+1. Git struggles with large files and a bit.
 2. Git needs to be used explicitly. It doesn`t just work in the background. 
     
 e)  Knit this exercise sheet. Some new files will automatically be
@@ -103,14 +102,10 @@ vornamen_2022$number = as.numeric(vornamen_2022$number)
 is.numeric(vornamen_2022$number)
 ```
 
-The count variable ("number") has the type "character" in both years
-because sometimes it's not sure how often a name get used, so it has an
-explanation. This is the reason why the type of count variable isn't
-right.
+The variable type of "number" is "character" in both years. This is the case, because for some names it isn't possible to say for sure how often the name has been used, so there is no exact number in the datasets. The value "4 or less" explains why the variable type "numeric" wasn't used. 
+We rounded the affected values to 4 up. However this has the effect that it is assumed now that there were 4 namings, although we cannot say this with certainty. 
 
-The repercussion is that the count variable "number" isn't exactly at it was in the beginning, because it was unsecure, if there were four babies or less that get that name.
-
-The columns got renamed, so that everything is in one language (English).
+Note: We renamed the columns, to use a consistent language in the datasets. 
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
@@ -123,6 +118,8 @@ total_number_of_babies_2022 <- sum(vornamen_2022$number)
 total_number_of_babies_2021
 total_number_of_babies_2022
 ```
+
+The bigger baby-boom has the year 2021 with 26620 babies.
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
@@ -151,7 +148,7 @@ most_popular_names <- combination_2021_2022 %>%
   arrange(desc(total_number)) %>%
   head(10)
 
-knitr::kable (most_popular_names, caption = "The top 10 names") 
+knitr::kable (most_popular_names, caption = "The 10 most used names in 2020 and 2021 combined") 
 ```
 
 ## Exercise 4: Chat GPT + apply (3 points)
@@ -216,3 +213,5 @@ Explanation: In this example "rapply" is used to take each value of "my_list" to
 
 Make sure to push all your commits and changes to GitHub before
 submitting the exercise sheet.
+
+Note: We both worked on the exercise sheet independently and each have our own repository. The changes now are only the final ones.
