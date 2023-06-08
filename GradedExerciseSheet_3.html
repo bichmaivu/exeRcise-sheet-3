@@ -1821,16 +1821,7 @@ your prompts in addition to the solution</p>
 been used. Find out which apply function would be correct and why it did
 not work. Correct the code. Also calculate the rowwise means.</li>
 </ol>
-<p>###Create a sample data frame</p>
-<p>tax_data &lt;- data.frame( Name = c(“Munich GmbH”, “ABC Inc.”,
-“Backpacks 1980”, “Bavarian Circus”), Tax_2019 = c(5000, 4000, 6000,
-3500), Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800,
-5900, 3400) )</p>
-<p>###Calculate column-wise means</p>
-<p>column_means &lt;- lapply(tax_data<span class="math display">\[,
--1\]</span>, 2, mean)</p>
-<p>column_means</p>
-<pre class="r"><code># Corrected code by chat gbt
+<pre class="r"><code># Corrected code by Chat GPT
 # Create a sample data frame
 
 tax_data &lt;- data.frame(
@@ -1848,10 +1839,10 @@ column_means</code></pre>
 operator “&lt;-” was incorrectly written as “&lt;-”. The correct
 operator is “&lt;-”, which is used for assigning values to variables in
 R. 2. The “lapply” function call had incorrect arguments. The code
-wasn’t correct, because of presentation “<span class="math display">\[,
--1\]</span>” and we need to correct this into “[, -1]”. Also instead of
-2, as the second argument need to pass the mean function. So the correct
-call should be “lapply(tax_data[, -1], mean)”.</p>
+wasn’t correct, because of the wrong presentation of “[, -1]” and we
+need to correct this right into “[, -1]”. Also instead of 2, as the
+second argument need to pass the mean function. So the correct call
+should be “lapply(tax_data[, -1], mean)”.</p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Using ChatGPT try to understand what the rapply() function does.
 Create an easy example with mock data where the function is used and
