@@ -11,7 +11,7 @@
 
 <meta name="author" content="Bichmai Vu (12057445), Nele Steiner (12548686)" />
 
-<meta name="date" content="2023-06-07" />
+<meta name="date" content="2023-06-08" />
 
 <title>Exercise #3</title>
 
@@ -354,7 +354,7 @@ display: none;
 <h3 class="subtitle">Fortgeschrittene Statistische Software für NF - SS
 2022/23</h3>
 <h4 class="author">Bichmai Vu (12057445), Nele Steiner (12548686)</h4>
-<h4 class="date">2023-06-07</h4>
+<h4 class="date">2023-06-08</h4>
 
 </div>
 
@@ -373,10 +373,10 @@ to always commit your changes after finishing each subtask e.g. create a
 commit after task <em>1d</em>, <em>1e</em> etc.</p></li>
 <li><p>Name 2 strengths and 2 weaknesses of git.</p></li>
 </ol>
-<p>strengths: 1. It’s very hard to lose files with git 2. Git allows
+<p>strengths: 1. It’s very hard to lose files with git. 2. Git allows
 easy collaboration as it allows everyone who is working on a project to
-see the changes other persons did</p>
-<p>weaknesses: 1. Git struggles with large files and a bit 2. Git needs
+see the changes other persons did.</p>
+<p>weaknesses: 1. Git struggles with large files and a bit. 2. Git needs
 to be used explicitly. It doesn`t just work in the background.</p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Knit this exercise sheet. Some new files will automatically be
@@ -450,15 +450,15 @@ repercussions.</p></li>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen_2022&#39; nicht gefunden</code></pre>
 <pre class="r"><code>is.numeric(vornamen_2022$number)</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen_2022&#39; nicht gefunden</code></pre>
-<p>The count variable (“number”) has the type “character” in both years
-because sometimes it’s not sure how often a name get used, so it has an
-explanation. This is the reason why the type of count variable isn’t
-right.</p>
-<p>The repercussion is that the count variable “number” isn’t exactly at
-it was in the beginning, because it was unsecure, if there were four
-babies or less that get that name.</p>
-<p>The columns got renamed, so that everything is in one language
-(English).</p>
+<p>The variable type of “number” is “character” in both years. This is
+the case, because for some names it isn’t possible to say for sure how
+often the name has been used, so there is no exact number in the
+datasets. The value “4 or less” explains why the variable type “numeric”
+wasn’t used. We rounded the affected values to 4 up. However this has
+the effect that it is assumed now that there were 4 namings, although we
+cannot say this with certainty.</p>
+<p>Note: We renamed the columns, to use a consistent language in the
+datasets.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Calculate the total number of babies born in Munich in 2022 and
 2021. Which year had the bigger baby-boom?</li>
@@ -467,6 +467,11 @@ babies or less that get that name.</p>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen_2021&#39; nicht gefunden</code></pre>
 <pre class="r"><code>total_number_of_babies_2022 &lt;- sum(vornamen_2022$number)</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen_2022&#39; nicht gefunden</code></pre>
+<pre class="r"><code>total_number_of_babies_2021</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;total_number_of_babies_2021&#39; nicht gefunden</code></pre>
+<pre class="r"><code>total_number_of_babies_2022</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;total_number_of_babies_2022&#39; nicht gefunden</code></pre>
+<p>The bigger baby-boom has the year 2021 with 26620 babies.</p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Add a new column <code>year</code> to both datasets which holds the
 correct year for each.</li>
@@ -480,20 +485,20 @@ correct year for each.</li>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Combine both datasets into one using <code>bind_rows()</code>.</li>
 </ol>
-<pre class="r"><code>vornamen &lt;- bind_rows(vornamen_2021, vornamen_2022)</code></pre>
+<pre class="r"><code>combination_2021_2022 &lt;- bind_rows(vornamen_2021, vornamen_2022)</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen_2021&#39; nicht gefunden</code></pre>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Combine the counts for same names to determine the most popular
 names across both years. Print out the top 10 names in a nicely
 formatted table for both years. Include a table caption.</li>
 </ol>
-<pre class="r"><code>most_popular_names &lt;- vornamen %&gt;% 
+<pre class="r"><code>most_popular_names &lt;- combination_2021_2022 %&gt;% 
   group_by(first_name) %&gt;%
   summarise(total_number = sum(number)) %&gt;%
   arrange(desc(total_number)) %&gt;%
   head(10)</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;vornamen&#39; nicht gefunden</code></pre>
-<pre class="r"><code>knitr::kable (most_popular_names, caption = &quot;The top 10 names&quot;) </code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;combination_2021_2022&#39; nicht gefunden</code></pre>
+<pre class="r"><code>knitr::kable (most_popular_names, caption = &quot;The 10 most used names in 2021 and 2022 combined&quot;) </code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): Objekt &#39;most_popular_names&#39; nicht gefunden</code></pre>
 </div>
 <div id="exercise-4-chat-gpt-apply-3-points" class="section level2">
@@ -506,44 +511,59 @@ been used. Find out which apply function would be correct and why it did
 not work. Correct the code. Also calculate the rowwise means.</li>
 </ol>
 <p>###Create a sample data frame</p>
-<pre class="r"><code>tax_data &lt;- data.frame( Name = c(&quot;Munich GmbH&quot;, &quot;ABC Inc.&quot;, &quot;Backpacks
-1980&quot;, &quot;Bavarian Circus&quot;), Tax_2019 = c(5000, 4000, 6000, 3500),
-Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800, 5900,
-3400) )</code></pre>
+<p>tax_data &lt;- data.frame( Name = c(“Munich GmbH”, “ABC Inc.”,
+“Backpacks 1980”, “Bavarian Circus”), Tax_2019 = c(5000, 4000, 6000,
+3500), Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800,
+5900, 3400) )</p>
 <p>###Calculate column-wise means</p>
-<pre class="r"><code>column_means &lt;- colMeans(tax_data[, -1])
+<p>column_means &lt;- lapply(tax_data<span class="math display">\[,
+-1\]</span>, 2, mean)</p>
+<p>column_means</p>
+<pre class="r"><code># Corrected code by chat gbt
+# Create a sample data frame
 
+tax_data &lt;- data.frame(
+  Name = c(&quot;Munich GmbH&quot;, &quot;ABC Inc.&quot;, &quot;Backpacks 1980&quot;, &quot;Bavarian Circus&quot;),
+  Tax_2019 = c(5000, 4000, 6000, 3500),
+  Tax_2020 = c(4800, 4200, 5800, 3700),
+  Tax_2021 = c(5200, 3800, 5900, 3400)
+)
+
+column_means &lt;- colMeans(tax_data[, -1])
 column_means</code></pre>
 <pre><code>## Tax_2019 Tax_2020 Tax_2021 
 ##     4625     4625     4575</code></pre>
+<p>There were two issues in the original code: 1. The assignment
+operator “&lt;-” was incorrectly written as “&lt;-”. The correct
+operator is “&lt;-”, which is used for assigning values to variables in
+R. 2. The “lapply” function call had incorrect arguments. The code
+wasn’t correct, because of presentation “<span class="math display">\[,
+-1\]</span>” and we need to correct this into “[, -1]”. Also instead of
+2, as the second argument need to pass the mean function. So the correct
+call should be “lapply(tax_data[, -1], mean)”.</p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Using ChatGPT try to understand what the rapply() function does.
 Create an easy example with mock data where the function is used and
 explain it in your words.</li>
 </ol>
-<p>The rapply() function in R is a recursive version of the lapply()
-function. It is used to apply a given function to each element of a list
-or nested list structure, including nested lists within lists.</p>
-<pre class="r"><code>my_list &lt;- list(
-  a = 1,
-  b = list(
-    c = 2,
-    d = 3
-  ),
-  e = list(
-    f = list(
-      g = 4,
-      h = 5
-    )
-  )
-)
+<p>Explanation: The “rapply” function applies a function to each element
+of a list or nested list structure, and the “rapply” function traverses
+the structure recursively of “lapply”, applying the function to all
+levels of nesting.</p>
+<pre class="r"><code>my_list &lt;- list(a = 1:3, b = 4:6, c = 7:9)
 
-modified_list &lt;- rapply(my_list, function(x) x + 10, classes = &quot;numeric&quot;, how = &quot;replace&quot;)</code></pre>
+rapply(my_list, function(x) x^2)</code></pre>
+<pre><code>## a1 a2 a3 b1 b2 b3 c1 c2 c3 
+##  1  4  9 16 25 36 49 64 81</code></pre>
+<p>Explanation: In this example “rapply” is used to take each value of
+“my_list” to square.</p>
 </div>
 <div id="final-note" class="section level2">
 <h2>Final Note</h2>
 <p>Make sure to push all your commits and changes to GitHub before
 submitting the exercise sheet.</p>
+<p>Note: We both worked on the exercise sheet independently and each
+have our own repository. The changes now are only the final ones.</p>
 </div>
 
 
