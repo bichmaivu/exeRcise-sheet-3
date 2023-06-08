@@ -165,20 +165,6 @@ a)  The code below does not work because the wrong apply function has
     been used. Find out which apply function would be correct and why it
     did not work. Correct the code. Also calculate the rowwise means.
 
-###Create a sample data frame
-
-tax_data \<- data.frame( 
-Name = c("Munich GmbH", "ABC Inc.", "Backpacks 1980", "Bavarian Circus"), 
-Tax_2019 = c(5000, 4000, 6000, 3500),
-Tax_2020 = c(4800, 4200, 5800, 3700), 
-Tax_2021 = c(5200, 3800, 5900, 3400) 
-)
-
-###Calculate column-wise means
-
-column_means \<- lapply(tax_data\[, -1\], 2, mean)
-
-column_means
 
 ```{r}
 # Corrected code by chat gbt
@@ -197,7 +183,7 @@ column_means
 
 There were two issues in the original code: 
 1. The assignment operator "<-" was incorrectly written as "\<-". The correct operator is "<-", which is used for assigning values to variables in R.
-2. The "lapply" function call had incorrect arguments. The code wasn't correct, because of presentation "\[, -1\]" and we need to correct this into "[, -1]". Also instead of 2, as the second argument need to pass the mean function. So the correct call should be "lapply(tax_data[, -1], mean)".
+2. The "lapply" function call had incorrect arguments. The code wasn't correct, because of the wrong presentation of "[, -1]" and we need to correct this right into "[, -1]". Also instead of 2, as the second argument need to pass the mean function. So the correct call should be "lapply(tax_data[, -1], mean)".
 
 
 b)  Using ChatGPT try to understand what the rapply() function does.
