@@ -29,13 +29,15 @@ c)  For all of the following tasks in this exercise sheet we ask you to
 
 d)  Name 2 strengths and 2 weaknesses of git.
     
-strengths: 
-1. It's very hard to lose files with git.
-2. Git allows easy collaboration as it allows everyone who is working on a project to see the changes other persons did.
+    strengths: 
+    1. It's very hard to lose files with git.
+
+    2. Git allows easy collaboration as it allows everyone who is working on a project to see the changes other persons did.
     
-weaknesses: 
-1. Git struggles with large files and a bit.
-2. Git needs to be used explicitly. It doesn`t just work in the background. 
+    weaknesses: 
+    1. Git struggles with large files and a bit.
+
+    2. Git needs to be used explicitly. It doesn`t just work in the background. 
     
 e)  Knit this exercise sheet. Some new files will automatically be
     generated when knitting the sheet e.g. the HTML page. Ignore these
