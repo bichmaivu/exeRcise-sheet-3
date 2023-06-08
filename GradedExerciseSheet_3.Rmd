@@ -167,7 +167,7 @@ a)  The code below does not work because the wrong apply function has
 
 
 ```{r}
-# Corrected code by chat gbt
+# Corrected code by Chat GPT
 # Create a sample data frame
 
 tax_data <- data.frame(
